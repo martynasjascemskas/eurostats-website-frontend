@@ -1,60 +1,120 @@
-import { fetchPlayers } from "../lib/data";
+import { fetchPlayers, fetchPlayersByName } from "../lib/data";
 import { Player } from "../lib/definitions";
 
-export default async function PlayerDataTable({ query }: { query: string }) {
-  const data = await fetchPlayers(query);
+export default async function PlayerDataTable({
+  query,
+  type,
+}: {
+  query: string;
+  type: "all" | "byName";
+}) {
+  const data =
+    type === "byName"
+      ? await fetchPlayersByName(query)
+      : await fetchPlayers(query);
+  //const data = await fetchPlayersByName(query);
   console.log(data);
 
   return (
-    <div>
-      <table className="table-auto">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Number</th>
-            <th>Played</th>
-            <th>Started</th>
-            <th>Minutes</th>
-            <th>Points</th>
-            <th>2 Point %</th>
-            <th>3 Point %</th>
-            <th>Free %</th>
-            <th>Off R</th>
-            <th>Def R</th>
-            <th>Total R</th>
-            <th>Ass</th>
-            <th>ST</th>
-            <th>Turn O</th>
-            <th>B</th>
-            <th>BA</th>
-            <th>FC</th>
-            <th>FR</th>
-            <th>PIR</th>
-          </tr>
-        </thead>
+    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        {data.length > 0 && (
+          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+              <th scope="col" className="px-6 py-3">
+                Player
+              </th>
+              <th scope="col" className="px-6 py-3">
+                #
+              </th>
+              <th scope="col" className="px-6 py-3">
+                GP
+              </th>
+              <th scope="col" className="px-6 py-3">
+                GS
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Min
+              </th>
+              <th scope="col" className="px-6 py-3">
+                PTS
+              </th>
+              <th scope="col" className="px-6 py-3">
+                2P%
+              </th>
+              <th scope="col" className="px-6 py-3">
+                3P%
+              </th>
+              <th scope="col" className="px-6 py-3">
+                FT%
+              </th>
+              <th scope="col" className="px-6 py-3">
+                OR
+              </th>
+              <th scope="col" className="px-6 py-3">
+                DR
+              </th>
+              <th scope="col" className="px-6 py-3">
+                TR
+              </th>
+              <th scope="col" className="px-6 py-3">
+                AST
+              </th>
+              <th scope="col" className="px-6 py-3">
+                STL
+              </th>
+              <th scope="col" className="px-6 py-3">
+                TO
+              </th>
+              <th scope="col" className="px-6 py-3">
+                BLK
+              </th>
+              <th scope="col" className="px-6 py-3">
+                BLKA
+              </th>
+              <th scope="col" className="px-6 py-3">
+                FC
+              </th>
+              <th scope="col" className="px-6 py-3">
+                FD
+              </th>
+              <th scope="col" className="px-6 py-3">
+                PIR
+              </th>
+            </tr>
+          </thead>
+        )}
         <tbody>
           {data.map((player: Player, index: number) => (
-            <tr key={index}>
-              <td>{player.name}</td>
-              <td>{player.num_in_team}</td>
-              <td>{player.games_played}</td>
-              <td>{player.games_started}</td>
-              <td>{player.minutes_played}</td>
-              <td>{player.points}</td>
-              <td>{player.two_point_percentage}</td>
-              <td>{player.three_point_percentage}</td>
-              <td>{player.free_throw_percentage}</td>
-              <td>{player.offensive_rebounds}</td>
-              <td>{player.defensive_rebounds}</td>
-              <td>{player.total_rebounds}</td>
-              <td>{player.assists}</td>
-              <td>{player.steals}</td>
-              <td>{player.turnovers}</td>
-              <td>{player.blocks}</td>
-              <td>{player.blocks_against}</td>
-              <td>{player.fouls_commited}</td>
-              <td>{player.fouls_received}</td>
-              <td>{player.performance_index_rating}</td>
+            <tr
+              key={index}
+              className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+            >
+              <th
+                scope="row"
+                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                {player.name}
+              </th>
+              <td className="px-6 py-4">{player.num_in_team}</td>
+              <td className="px-6 py-4">{player.games_played}</td>
+              <td className="px-6 py-4">{player.games_started}</td>
+              <td className="px-6 py-4">{player.minutes_played}</td>
+              <td className="px-6 py-4">{player.points}</td>
+              <td className="px-6 py-4">{player.two_point_percentage}</td>
+              <td className="px-6 py-4">{player.three_point_percentage}</td>
+              <td className="px-6 py-4">{player.free_throw_percentage}</td>
+              <td className="px-6 py-4">{player.offensive_rebounds}</td>
+              <td className="px-6 py-4">{player.defensive_rebounds}</td>
+              <td className="px-6 py-4">{player.total_rebounds}</td>
+              <td className="px-6 py-4">{player.assists}</td>
+              <td className="px-6 py-4">{player.steals}</td>
+              <td className="px-6 py-4">{player.turnover}</td>
+              <td className="px-6 py-4">{player.blocks}</td>
+              <td className="px-6 py-4">{player.blocks_against}</td>
+              <td className="px-6 py-4">{player.fouls_commited}</td>
+              <td className="px-6 py-4">{player.fouls_received}</td>
+              <td className="px-6 py-4">{player.performance_index_rating}</td>
             </tr>
           ))}
         </tbody>

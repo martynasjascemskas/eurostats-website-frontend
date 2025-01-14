@@ -15,7 +15,7 @@ export type Player = {
   total_rebounds: number;
   assists: number;
   steals: number;
-  turnovers: number;
+  turnover: number;
   blocks: number;
   blocks_against: number;
   fouls_commited: number;
