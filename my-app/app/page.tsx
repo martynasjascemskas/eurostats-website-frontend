@@ -1,0 +1,25 @@
+import Link from "next/link";
+import Navbar from "./ui/navbar";
+
+export default async function Home() {
+  return (
+    <>
+      <Navbar />
+      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+          Welcome to Euro Stats!
+          <Link href="/teams">
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Get Started!
+              </span>
+            </button>
+          </Link>
+        </main>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+          footer
+        </footer>
+      </div>
+    </>
+  );
+}
