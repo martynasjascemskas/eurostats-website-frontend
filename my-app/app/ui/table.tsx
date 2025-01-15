@@ -12,8 +12,7 @@ export default async function PlayerDataTable({
     type === "byName"
       ? await fetchPlayersByName(query)
       : await fetchPlayers(query);
-  //const data = await fetchPlayersByName(query);
-  console.log(data);
+  //console.log(data);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

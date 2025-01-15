@@ -23,6 +23,10 @@ export type Player = {
   performance_index_rating: number;
   team_name: string;
 };
+export type TeamData = {
+  cover: string;
+  title: string;
+};
 
 export type Team = {
   points: number;
