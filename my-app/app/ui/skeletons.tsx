@@ -3,11 +3,8 @@ export function TableRowSkeleton() {
     <tr className="animate-pulse w-full border-b shimmer border-gray-700 last-of-type:border-none [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
       <td className="relative overflow-hidden whitespace-nowrap py-3 pl-6 pr-3">
         <div className="flex items-center gap-3">
-          <div className="h-6 w-44 rounded bg-gray-700"></div>
+          <div className="h-6 w-44 rounded bg-gray-600"></div>
         </div>
-      </td>
-      <td className="whitespace-nowrap px-3 py-3">
-        <div className="h-6 w-12 rounded bg-gray-600"></div>
       </td>
       <td className="whitespace-nowrap px-3 py-3">
         <div className="h-6 w-12 rounded bg-gray-700"></div>
@@ -107,9 +104,6 @@ export function PlayersTableSkeleton() {
               <tr>
                 <th scope="col" className="px-4 py-3 font-medium sm:pl-6">
                   Player
-                </th>
-                <th scope="col" className="px-4 py-3 font-medium text-center">
-                  #
                 </th>
                 <th scope="col" className="px-4 py-3 font-medium text-center">
                   GP

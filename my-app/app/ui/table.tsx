@@ -24,9 +24,6 @@ export default async function PlayerDataTable({
                 Player
               </th>
               <th scope="col" className="px-6 py-3">
-                #
-              </th>
-              <th scope="col" className="px-6 py-3">
                 GP
               </th>
               <th scope="col" className="px-6 py-3">
@@ -95,7 +92,6 @@ export default async function PlayerDataTable({
               >
                 {player.name}
               </th>
-              <td className="px-6 py-4">{player.num_in_team}</td>
               <td className="px-6 py-4">{player.games_played}</td>
               <td className="px-6 py-4">{player.games_started}</td>
               <td className="px-6 py-4">{player.minutes_played}</td>

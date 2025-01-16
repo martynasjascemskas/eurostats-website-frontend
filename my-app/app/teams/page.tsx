@@ -24,15 +24,16 @@ export default function Page() {
   return (
     <div className="min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        {/* <Search placeholder="Search teams..." /> */}
-        <div className="w-full max-w-md">
-          <input
-            type="text"
-            placeholder="Search for teams"
-            value={searchQuery}
-            onChange={handleSearch}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        <div className="w-full flex justify-center">
+          <div className="w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Search for teams..."
+              value={searchQuery}
+              onChange={handleSearch}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
           {filteredTeams.map((team: TeamData, index: number) => (
