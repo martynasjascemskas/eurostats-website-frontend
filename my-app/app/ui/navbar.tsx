@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import euroleaguesvg from "../../public/euroleague.svg";
+import euroleaguesvg from "../../public/basketballlogo.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,11 @@ export default function Navbar() {
           href="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <Image src={euroleaguesvg} alt="euroleague icon" className="size-8" />
+          <Image
+            src={euroleaguesvg}
+            alt="euroleague icon"
+            className="size-10 animate-spin"
+          />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Euro Stats
           </span>

@@ -31,7 +31,7 @@ export default function Page() {
               placeholder="Search for teams..."
               value={searchQuery}
               onChange={handleSearch}
-              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
             />
           </div>
         </div>
