@@ -6,7 +6,9 @@ import teamData from "../teams/_data/teams.json";
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | undefined };
+  searchParams: Promise<{
+    team: string;
+  }>;
 }) {
   const params = await searchParams;
   const teamValue = params.team || "Default Team";
