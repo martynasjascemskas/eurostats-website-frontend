@@ -4,15 +4,16 @@ import { Player } from "../lib/definitions";
 export default async function PlayerDataTable({
   query,
   type,
+  players,
 }: {
   query: string;
   type: "all" | "byName";
+  players: number;
 }) {
   const data =
     type === "byName"
       ? await fetchPlayersByName(query)
       : await fetchPlayers(query);
-  //console.log(data);
 
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -77,18 +78,20 @@ export default async function PlayerDataTable({
               <th scope="col" className="px-6 py-3">
                 PIR
               </th>
+              {type === "byName" && (
+                <th scope="col" className="px-6 py-4">
+                  Team Name
+                </th>
+              )}
             </tr>
           </thead>
         )}
         <tbody>
-          {data.map((player: Player, index: number) => (
-            <tr
-              key={index}
-              className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
-            >
+          {data.slice(0, players).map((player: Player, index: number) => (
+            <tr key={index} className="odd:bg-white even:bg-gray-50 border-b">
               <th
                 scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="px-6 py-4 font-medium text-gray-900 dark:text-white"
               >
                 {player.name}
               </th>
@@ -110,6 +113,9 @@ export default async function PlayerDataTable({
               <td className="px-6 py-4">{player.fouls_commited}</td>
               <td className="px-6 py-4">{player.fouls_received}</td>
               <td className="px-6 py-4">{player.performance_index_rating}</td>
+              {type === "byName" && (
+                <td className="px-6 py-4">{player.team_name}</td>
+              )}
             </tr>
           ))}
         </tbody>
